@@ -1,0 +1,6 @@
+# Brand Ads BFCM Planner
+.DS_Store
+__pycache__/
+*.py[cod]
+.env
+.env.*
