@@ -1,0 +1,387 @@
+{
+  "skill_version": "1.1.1",
+  "approved_through": "2026-11-19",
+  "default_language": "en",
+  "policies": {
+    "entry": {
+      "prompt": "Help me prepare my Brand Ads Black Friday advertising.",
+      "account_scope": "current_or_explicitly_selected_authorized_account",
+      "overview_complete_days": 7,
+      "intent": [
+        "BRAND"
+      ],
+      "branches": [
+        "EXISTING_CAMPAIGNS",
+        "CREATE_CAMPAIGNS"
+      ],
+      "first_time_advertiser_flow": "DEFINED_REGISTERED_NEW_ACCOUNT_TRAFFIC_FIRST",
+      "overview_fields": [
+        "OBJECTIVE_DESTINATION",
+        "SPEND",
+        "DISTINCT_CAMPAIGN_COUNT",
+        "SPEND_SHARE",
+        "PROMOTION_OBJECT",
+        "ACTUAL_TARGET_COUNTRIES"
+      ],
+      "scope_confirmation": "ONE_CONSOLIDATED_IF_NOT_ALREADY_EXPLICIT",
+      "detailed_checks_after_scope_confirmation": true,
+      "one_objective_at_a_time": true,
+      "queue_order": "USER_ORDER_ELSE_DESIRED_OUTCOME_AND_RELEVANT_HISTORY",
+      "reuse_known_context": true,
+      "shared_budget_ledger": true,
+      "explicit_create_skips_historical_checks": true,
+      "default_task_when_unspecified": "EXISTING_CAMPAIGNS",
+      "offer_creation_after_history": true,
+      "overview_spend_share_scope": "COVERED_BRAND_OBJECTIVES_ONLY_NOT_FULL_ACCOUNT_UNLESS_VERIFIED"
+    },
+    "existing": {
+      "all_matching_active": true,
+      "filter_by_minimum_spend": false,
+      "top_n_cutoff": false,
+      "pagination_required": true,
+      "aos": "ALL_APPLICABLE_BRAND_CANDIDATES",
+      "aos_cpa_conversion": "APPLICABLE_CONVERSION_ONLY",
+      "unknown_is_pass": false,
+      "default_change_scope": [
+        "BUDGET"
+      ]
+    },
+    "budget": {
+      "bau_start_inclusive": "2026-09-01T00:00:00Z",
+      "bau_end_exclusive": "2026-10-01T00:00:00Z",
+      "bau_calendar_days": 30,
+      "benchmark_shape": "LOWER_UPPER",
+      "formula": "bau_average_daily_actual_spend * [lower, upper]",
+      "prefill": "LOWER",
+      "prompt_existing_only_if": "CURRENT_BUDGET < APPLICABLE_RECOMMENDATION",
+      "automatic_lowering": false,
+      "benchmark_is_total_cap": false,
+      "new_advertiser_exception": "BEST_PRACTICE_REGISTERED_REGION_NO_BAU_MULTIPLIER",
+      "brand_new_without_usable_bau": "PROACTIVELY_OBJECTIVE_BEST_PRACTICE_VERIFIED_REGISTERED_REGION_BEFORE_BUDGET_QUESTION",
+      "no_bau_multiplier_only": "NO_MONETARY_PEER_REFERENCE_WITHOUT_VERIFIED_ABSOLUTE_DAILY_AMOUNT",
+      "primary": "BAU_TIMES_BENCHMARK_RANGE"
+    },
+    "creative": {
+      "benchmark_value_type": "ABSOLUTE_DISTINCT_ASSET_COUNT_RANGE",
+      "baseline": "BAU_SPEND_ASSET_COUNT_OPTIONAL_CONTEXT_ONLY_NOT_FORMULA_INPUT",
+      "match_dimensions": [
+        "account",
+        "Objective Type",
+        "Ad Sub Region (delivery region)",
+        "Industry v3.2 L2 Name",
+        "ad_spend_tier",
+        "bfcm_phase"
+      ],
+      "schedule": "EXISTING_CURRENT_OR_PROPOSED_CONFIRMED_SCHEDULE_NEW_PROPOSED_SCHEDULE_REMAINING_FUTURE_DATES",
+      "calendar_timezone": "UTC+0",
+      "calendar_year_for_matching": 2026,
+      "sample_year": 2025,
+      "phase_selection": "ANY_OVERLAP_BY_PHASE_NAME_OR_ORDER_NOT_2025_DATES",
+      "reference": "[max(covered_phase_lower_counts), max(covered_phase_upper_counts)]",
+      "sum_phase_counts": false,
+      "prorate_for_partial_phase": false,
+      "current_available": "ALL_VERIFIED_USABLE_IN_SAME_SCOPE",
+      "dedup_across_ads_and_campaigns": true,
+      "multiple_campaigns": "UNION_COVERED_PHASES_IN_SAME_ACCOUNT_OBJECTIVE_SCOPE_COUNT_REFERENCE_ONCE",
+      "supplement": "[max(0,ref_lower-available), max(0,ref_upper-available)]",
+      "default_supplement_target": "LOWER_BOUND",
+      "missing_phase": "DISCLOSE_PARTIAL_COVERAGE_DO_NOT_INVENT_COMPLETE_RANGE",
+      "no_phase_overlap": "USE_OTHER_APPLICABLE_REFERENCE_NOT_BFCM_TABLE",
+      "blocks_creation_if_below_benchmark": false,
+      "new_advertiser_exception": "OBJECTIVE_BEST_PRACTICE_QUANTITY",
+      "brand_new_without_spend": "PROACTIVELY_OBJECTIVE_BEST_PRACTICE_LABEL_AND_USABILITY_COUNTS"
+    },
+    "presentation": {
+      "existing_default": "SUMMARY_AND_ACTION",
+      "details": "ON_DEMAND_TWO_COLUMN_PER_CAMPAIGN",
+      "confirmation": "FIXED_OBJECT_LIST_AND_EXACT_VALUES",
+      "changed_object": "SKIP_AND_REPORT",
+      "batch_atomicity_promised": false
+    },
+    "calendar": {
+      "year": 2026,
+      "full_bfcm": [
+        "11-12",
+        "11-30"
+      ],
+      "scheduling": "ACTUAL_CUSTOMER_USAGE_AND_CONFIRMED_MARKETING_DATES_NO_FIXED_USAGE_START",
+      "phase_share_default_display": false,
+      "phase_share_execution": false,
+      "phase_reference_year": 2025,
+      "phase_reference_only_when_asked": true,
+      "phase_proportions": "READ_BUNDLED_Budget_Allocation_v32_expanded.csv_ON_REQUEST",
+      "phases": [
+        {
+          "name": "Grand opening",
+          "2026": [
+            "11-12",
+            "11-15"
+          ],
+          "2025": [
+            "11-13",
+            "11-16"
+          ]
+        },
+        {
+          "name": "Gifting-theme day",
+          "2026": [
+            "11-16",
+            "11-18"
+          ],
+          "2025": [
+            "11-17",
+            "11-19"
+          ]
+        },
+        {
+          "name": "Second peak",
+          "2026": [
+            "11-19",
+            "11-22"
+          ],
+          "2025": [
+            "11-20",
+            "11-23"
+          ]
+        },
+        {
+          "name": "Self-rewarding refresh",
+          "2026": [
+            "11-23",
+            "11-25"
+          ],
+          "2025": [
+            "11-24",
+            "11-26"
+          ]
+        },
+        {
+          "name": "Black Friday",
+          "2026": [
+            "11-26",
+            "11-30"
+          ],
+          "2025": [
+            "11-27",
+            "12-01"
+          ]
+        }
+      ],
+      "creative_phase_lookup_default": true
+    },
+    "new_advertiser": {
+      "id_scope": "advertiser_id_not_MMM",
+      "types": [
+        {
+          "type": "REGISTERED_NO_FIRST_SPEND",
+          "all": [
+            "NO_CAMPAIGN_CREATION_HISTORY",
+            "LIFETIME_COST_EQUALS_ZERO"
+          ]
+        },
+        {
+          "type": "Q4_FIRST_SPEND_NO_RECENT_ACTIVE",
+          "all": [
+            "FIRST_SPEND_DATE_IN_2026_Q4",
+            "NO_ACTIVE_CAMPAIGNS_DURING_LAST_7_DAYS"
+          ]
+        }
+      ],
+      "unknown_is_new": false,
+      "zero_recent_spend_is_no_active": false,
+      "default_objective": "TRAFFIC",
+      "no_url_fallback": [
+        "VIDEO_VIEWS",
+        "REACH"
+      ],
+      "budget_material_source": "BEST_PRACTICE_BY_REGISTERED_ACCOUNT_REGION",
+      "existing_benchmark_region": "ACTUAL_AD_TARGET_REGION",
+      "account_country_mapping": "SEPARATE_ADVERTISER_COUNTRY_MAPPING_FROM_ADVERTISER_INFO_GET_COUNTRY",
+      "incentive": {
+        "name": "2026 Q4 Traffic Incentive Plan",
+        "source": "USER_SCREENSHOT",
+        "region": "GLOBAL",
+        "slots": 2000,
+        "first_come_first_serve": true,
+        "objective": "WEB_TRAFFIC",
+        "bidding": "APPLICABLE_MAXIMUM_DELIVERY",
+        "minimum_creatives": 6,
+        "minimum_images": 2,
+        "active_days": 14,
+        "within_days": 30,
+        "spending_start": "2026-11-05",
+        "spending_end": "2026-12-31",
+        "credit_fraction": 0.5,
+        "cap_usd_per_advertiser": 100,
+        "eligibility_verified": false,
+        "sign_up_period_raw": "No Requirement",
+        "payout_date_raw": "before 10/1/27",
+        "payout_date_normalized": "2027-01-10",
+        "payout_date_status": "CONFIRMED_BY_USER",
+        "payout_date_relation": "BEFORE",
+        "sign_up_required": false,
+        "sign_up_status": "CONFIRMED_BY_USER_2026_11_16"
+      },
+      "first_turn": "TRAFFIC_ONLY_ASK_PROMOTION_URL_REUSE_IF_KNOWN",
+      "fallback_trigger": "USER_EXPLICITLY_SAYS_NO_URL_OR_ALREADY_STATED_NO_URL_NOT_MERE_MISSING_FIELD",
+      "fallback_guidance": {
+        "REACH": "MORE_UNIQUE_PEOPLE_SEE_BRAND_OR_ACTIVITY",
+        "VIDEO_VIEWS": "FOCUSED_VIEW_WATCHING_FOR_PRODUCT_DEMO_OR_STORY"
+      },
+      "best_practice_region_rollup": "DIRECT_REGION_5_GROUP_NO_ROLLUP"
+    },
+    "benchmark": {
+      "sheets": [
+        {
+          "purpose": "calendar_and_tiers",
+          "name": "Campaign Phases & Reference Periods.csv",
+          "file": "data/Campaign Phases & Reference Periods.csv",
+          "sha256": "ee7d5e3c599b8494882ff929ead5ba59253789e3fc6432c77b64a8be5bab5b70"
+        },
+        {
+          "purpose": "budget",
+          "name": "Budget Suggestions L2.csv",
+          "file": "data/Budget Suggestions L2.csv",
+          "sha256": "192379300f22cb7067dcc5ffb7c2f6040d6a43cb89d2971e68f0c778e43dddcd"
+        },
+        {
+          "purpose": "creative",
+          "name": "Video Suggestions L2.csv",
+          "file": "data/Video Suggestions L2.csv",
+          "sha256": "0f323e33b1a2e7f6d57f7105f13f6173b1a1c04d56b8d0e9e3b1bee0dec9eb40"
+        },
+        {
+          "purpose": "phase_allocation",
+          "name": "Budget Allocation L2.csv",
+          "file": "data/Budget Allocation L2.csv",
+          "sha256": "1a43fe25893f33570391c2729eda20d099be28569f3b3994744ea84236f34476"
+        },
+        {
+          "purpose": "target_country_mapping",
+          "name": "target_country-to-Region Mapping.csv",
+          "file": "data/target_country-to-Region Mapping.csv",
+          "sha256": "19bb23f350f60b8a343a17b25333c123e57ee0a968eeef0b4e917ddd1a8c8348"
+        },
+        {
+          "purpose": "advertiser_country_mapping",
+          "name": "advertiser_country-to-Region Mapping.csv",
+          "file": "data/advertiser_country-to-Region Mapping.csv",
+          "sha256": "9ef003a4a7f184d005fb5a98e9d77c9befe0e2781065eb1de67f5c611a7d1193"
+        }
+      ],
+      "field_mapping": {
+        "objective": "Objective Type EN",
+        "delivery_region": "Ad Sub Region",
+        "industry": "Industry v3.2 L2 Name",
+        "spend_tier": "Spend Tier",
+        "upper": "Suggested Upper Percentile",
+        "lower": "Suggested Lower Percentile"
+      },
+      "read_bounds_by_header_not_position": true,
+      "industry_mapping": "VERIFIED_V3_2_L2_NAME_EXACT_NO_V4_0_L1_OR_ID_GUESS",
+      "spend_tier": {
+        "basis": "ACCOUNT_BAU_TOTAL_ACTUAL_SPEND",
+        "period": [
+          "2026-09-01",
+          "2026-09-30"
+        ],
+        "timezone": "UTC+0",
+        "currency": "USD",
+        "T3": {
+          "min_inclusive": 0,
+          "max_exclusive": 1000
+        },
+        "T2": {
+          "min_inclusive": 1000,
+          "max_exclusive": 5000
+        },
+        "T1": {
+          "min_inclusive": 5000
+        },
+        "fx": "RELIABLE_SOURCE_AND_DATE_REQUIRED_FOR_NON_USD"
+      },
+      "unknown_or_ambiguous_match": "DISCLOSE_NO_GUESS_OR_AVERAGE",
+      "country_to_subregion_mapping": "EXACT_TARGET_COUNTRY_TO_TARGET_REGION_ONLY",
+      "objective_mapping": "EXACT_APPLICABLE_ROW_NO_WEBSITE_TO_APP_INFERENCE",
+      "phase_allocation": {
+        "default_display": false,
+        "auto_execute": false,
+        "preserve_original_displayed_shares": true,
+        "normalize_silently": false,
+        "rounding_max_percentage_point_error": "number_of_phases * display_step_percentage_points / 2",
+        "five_phase_one_decimal_pp_tolerance": 0.25,
+        "outside_rounding_or_missing": "VERIFY_SOURCE_BEFORE_RECOMMENDATION"
+      },
+      "access_validation": {
+        "audit": "data-quality.json",
+        "checksums": "benchmark.json",
+        "business_semantics_independently_verified": false
+      },
+      "data_release": "brand-bfcm-v3.2-l2-2026-11-19",
+      "country_mappings": {
+        "target": {
+          "purpose": "target_country_mapping",
+          "input": "target_country",
+          "output": "target_region",
+          "match": "exact",
+          "source": "ad_group_configured_or_confirmed_proposed_targeting",
+          "id_resolution": "TikTok_location_query_to_country_before_lookup"
+        },
+        "advertiser": {
+          "purpose": "advertiser_country_mapping",
+          "input": "advertiser_country",
+          "output": "Region (5-group)",
+          "logical_output": "mapped_value",
+          "match": "exact",
+          "source": "advertiser_info_get.country",
+          "request": {
+            "advertiser_ids": [
+              "advertiser_id"
+            ],
+            "fields": [
+              "advertiser_id",
+              "country"
+            ]
+          },
+          "select_response": "matching_advertiser_id"
+        },
+        "duplicates": "ambiguous_even_if_identical",
+        "missing_or_blank": "request_correction_no_defaults",
+        "multiple_targets": "resolve_individually_preserve_each_mapping_no_automatic_aggregation"
+      }
+    },
+    "brand_creation": {
+      "objectives": [
+        "REACH",
+        "TRAFFIC",
+        "VIDEO_VIEWS"
+      ],
+      "best_practice_region_input": "ADVERTISER_REGISTERED_COUNTRY_FOR_NEW_AND_EXISTING_ADVERTISERS",
+      "region_dictionary": "EXACT_ADVERTISER_COUNTRY_TO_REGION_5_GROUP",
+      "industry_benchmark_region_input": "ACTUAL_AD_TARGET_COUNTRY",
+      "targeting_input": "CUSTOMER_REQUESTED_AD_TARGET_COUNTRY",
+      "budget_source_priority_unchanged": true
+    },
+    "data_handling": {
+      "purpose": "CURRENT_AUTHORIZED_ADVERTISING_TASK",
+      "tool_payloads": "NECESSARY_FIELDS_ONLY_NO_CREDENTIALS_OR_UNRELATED_PERSONAL_DATA",
+      "task_data_location": "CURRENT_AUTHORIZED_CONVERSATION_OR_WORKSPACE_EXISTING_ACCESS_AND_RETENTION_CONTROLS",
+      "real_account_data_in_package_or_repository": false,
+      "external_sharing": "EXPLICIT_AUTHORIZATION_FOR_SPECIFIC_INFORMATION_AND_DESTINATION_MINIMIZE_AND_REDACT"
+    }
+  },
+  "platform_terminology": "PRESERVE_ORIGINAL_ENGLISH_IN_ALL_RESPONSE_LANGUAGES",
+  "benchmark_access": {
+    "primary": "BUNDLED_USER_SUPPLIED_CSV",
+    "bundled_snapshot": true,
+    "registered_mapping": "ADVERTISER_INFO_GET_COUNTRY_EXACT_ADVERTISER_COUNTRY_TO_REGION_5_GROUP",
+    "region_label_mismatch": "UNKNOWN_NO_ALIAS_OR_DEFAULT"
+  },
+  "scope": {
+    "objectives": [
+      "REACH",
+      "TRAFFIC",
+      "VIDEO_VIEWS"
+    ]
+  }
+}

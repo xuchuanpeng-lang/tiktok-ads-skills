@@ -1,0 +1,166 @@
+{
+  "version": "1.1.0",
+  "match_fields": {
+    "objective": "Objective Type EN",
+    "delivery_region": "Ad Sub Region",
+    "industry": "Industry v3.2 L2 Name",
+    "spend_tier": "Spend Tier",
+    "upper": "Suggested Upper Percentile",
+    "lower": "Suggested Lower Percentile"
+  },
+  "sheets": [
+    {
+      "purpose": "calendar_and_tiers",
+      "name": "Campaign Phases & Reference Periods.csv",
+      "file": "data/Campaign Phases & Reference Periods.csv",
+      "sha256": "ee7d5e3c599b8494882ff929ead5ba59253789e3fc6432c77b64a8be5bab5b70"
+    },
+    {
+      "purpose": "budget",
+      "name": "Budget Suggestions L2.csv",
+      "file": "data/Budget Suggestions L2.csv",
+      "sha256": "192379300f22cb7067dcc5ffb7c2f6040d6a43cb89d2971e68f0c778e43dddcd"
+    },
+    {
+      "purpose": "creative",
+      "name": "Video Suggestions L2.csv",
+      "file": "data/Video Suggestions L2.csv",
+      "sha256": "0f323e33b1a2e7f6d57f7105f13f6173b1a1c04d56b8d0e9e3b1bee0dec9eb40"
+    },
+    {
+      "purpose": "phase_allocation",
+      "name": "Budget Allocation L2.csv",
+      "file": "data/Budget Allocation L2.csv",
+      "sha256": "1a43fe25893f33570391c2729eda20d099be28569f3b3994744ea84236f34476"
+    },
+    {
+      "purpose": "target_country_mapping",
+      "name": "target_country-to-Region Mapping.csv",
+      "file": "data/target_country-to-Region Mapping.csv",
+      "sha256": "19bb23f350f60b8a343a17b25333c123e57ee0a968eeef0b4e917ddd1a8c8348"
+    },
+    {
+      "purpose": "advertiser_country_mapping",
+      "name": "advertiser_country-to-Region Mapping.csv",
+      "file": "data/advertiser_country-to-Region Mapping.csv",
+      "sha256": "9ef003a4a7f184d005fb5a98e9d77c9befe0e2781065eb1de67f5c611a7d1193"
+    }
+  ],
+  "bau": {
+    "start_inclusive": "2026-09-01T00:00:00Z",
+    "end_exclusive": "2026-10-01T00:00:00Z",
+    "calendar_days": 30
+  },
+  "bfcm": {
+    "start_inclusive_date": "2026-11-12",
+    "end_inclusive_date": "2026-11-30",
+    "timezone": "UTC+0",
+    "use_actual_customer_start": true
+  },
+  "phases": [
+    {
+      "order": 1,
+      "name": "Grand opening",
+      "start_2026": "2026-11-12",
+      "end_2026": "2026-11-15",
+      "start_2025": "2025-11-13",
+      "end_2025": "2025-11-16"
+    },
+    {
+      "order": 2,
+      "name": "Gifting-theme day",
+      "start_2026": "2026-11-16",
+      "end_2026": "2026-11-18",
+      "start_2025": "2025-11-17",
+      "end_2025": "2025-11-19"
+    },
+    {
+      "order": 3,
+      "name": "Second peak",
+      "start_2026": "2026-11-19",
+      "end_2026": "2026-11-22",
+      "start_2025": "2025-11-20",
+      "end_2025": "2025-11-23"
+    },
+    {
+      "order": 4,
+      "name": "Self-rewarding refresh",
+      "start_2026": "2026-11-23",
+      "end_2026": "2026-11-25",
+      "start_2025": "2025-11-24",
+      "end_2025": "2025-11-26"
+    },
+    {
+      "order": 5,
+      "name": "Black Friday",
+      "start_2026": "2026-11-26",
+      "end_2026": "2026-11-30",
+      "start_2025": "2025-11-27",
+      "end_2025": "2025-12-01"
+    }
+  ],
+  "spend_tiers": {
+    "basis": "ACCOUNT_BAU_TOTAL_ACTUAL_SPEND",
+    "period": [
+      "2026-09-01",
+      "2026-09-30"
+    ],
+    "timezone": "UTC+0",
+    "currency": "USD",
+    "T3": {
+      "min_inclusive": 0,
+      "max_exclusive": 1000
+    },
+    "T2": {
+      "min_inclusive": 1000,
+      "max_exclusive": 5000
+    },
+    "T1": {
+      "min_inclusive": 5000
+    },
+    "fx": "RELIABLE_SOURCE_AND_DATE_REQUIRED_FOR_NON_USD"
+  },
+  "budget_type": "MULTIPLIER_RANGE_TIMES_BAU_AVERAGE_DAILY_ACTUAL_SPEND",
+  "creative_type": "ABSOLUTE_DISTINCT_CREATIVE_COUNT_RANGE_MAX_PER_BOUND_ACROSS_PHASES",
+  "historical_phase_budget_shares": "ON_REQUEST_ONLY_KEEP_ORIGINAL_NO_AUTO_ALLOCATION",
+  "primary_access": "BUNDLED_USER_SUPPLIED_CSV",
+  "bundled_data_snapshot": true,
+  "data_release": "brand-bfcm-v3.2-l2-2026-11-19",
+  "supported_objective_rows": [
+    "Reach (Auction)",
+    "Traffic",
+    "Video Views (Auction)"
+  ],
+  "source_archive": "Brand_BFCM_V3_2_L2_CSV.zip",
+  "country_mappings": {
+    "target": {
+      "purpose": "target_country_mapping",
+      "input": "target_country",
+      "output": "target_region",
+      "match": "exact",
+      "source": "ad_group_configured_or_confirmed_proposed_targeting",
+      "id_resolution": "TikTok_location_query_to_country_before_lookup"
+    },
+    "advertiser": {
+      "purpose": "advertiser_country_mapping",
+      "input": "advertiser_country",
+      "output": "Region (5-group)",
+      "logical_output": "mapped_value",
+      "match": "exact",
+      "source": "advertiser_info_get.country",
+      "request": {
+        "advertiser_ids": [
+          "advertiser_id"
+        ],
+        "fields": [
+          "advertiser_id",
+          "country"
+        ]
+      },
+      "select_response": "matching_advertiser_id"
+    },
+    "duplicates": "ambiguous_even_if_identical",
+    "missing_or_blank": "request_correction_no_defaults",
+    "multiple_targets": "resolve_individually_preserve_each_mapping_no_automatic_aggregation"
+  }
+}
