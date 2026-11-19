@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand Ads BFCM Planner"
+  short_description: "Plan TikTok Reach, Traffic and Video Views for BFCM"
+  default_prompt: "Use $tiktok-brand-ads-bfcm-planner to prepare my Brand Ads Black Friday advertising for Reach, Traffic or Video Views. Review my account and recommend a plan before making changes."
