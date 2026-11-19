@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand Newbie Ads Planner"
+  short_description: "Set up your first TikTok Brand Ads campaign with Best Practice"
+  default_prompt: "Use $brand-newbie-ads-planner to set up my first TikTok Brand Ads campaign according to Best Practice. Recommend the objective, budget, targeting, creatives and schedule, and show the concrete plan before making changes."
